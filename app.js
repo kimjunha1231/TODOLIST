@@ -1,0 +1,43 @@
+const title = document.querySelector("#title");
+const list = document.querySelector("#listContainer");
+const createForm = document.querySelector("#createForm");
+const button = document.querySelector("#addButton");
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  const container = document.createElement("div");
+  const bigList = document.createElement("div");
+  const smallList = document.createElement("div");
+  const listForm = document.createElement("form");
+  const newListTitle = document.createElement("div");
+  const newListInput = document.createElement("input");
+  const newListButton = document.createElement("button");
+
+  const listTitle = title.value;
+  container.id = "listContainer";
+  listForm.id = "createBox";
+  smallList.id = "contentBoxWrap";
+  newListTitle.innerText = listTitle;
+  newListInput.id = "content";
+  newListInput.type = "text";
+  newListInput.placeholder = "새로 만들기";
+  bigList.id = "firstList";
+  newListButton.id = "addContent";
+  newListButton.innerText = "추가";
+  newListTitle.id = "listTitle";
+  list.appendChild(container);
+  container.appendChild(bigList);
+  bigList.appendChild(newListTitle);
+  bigList.appendChild(smallList);
+  bigList.appendChild(listForm);
+  listForm.appendChild(newListInput);
+  listForm.appendChild(newListButton);
+  title.value = "";
+  newListButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newListContent = document.createElement("div");
+    newListContent.innerText = newListInput.value;
+    newListContent.id = "contentBox";
+    smallList.appendChild(newListContent);
+    newListInput.value = "";
+  });
+});
