@@ -1,4 +1,5 @@
-const title = document.querySelector("#title");
+const title = document.querySelector(".titles");
+const backColor = document.querySelector(".backGroundColor");
 const list = document.querySelector("#listContainer");
 const createForm = document.querySelector("#createForm");
 const button = document.querySelector("#addButton");
@@ -8,15 +9,19 @@ button.addEventListener("click", (e) => {
   const bigList = document.createElement("div");
   const smallList = document.createElement("div");
   const listForm = document.createElement("form");
-  const newListTitle = document.createElement("div");
+  const newListTitle = document.createElement("span");
   const newListInput = document.createElement("input");
   const newListButton = document.createElement("button");
-
+  const count = document.createElement("span");
+  let countNumber = 0;
+  count.innerText = countNumber;
   const listTitle = title.value;
+  const color = backColor.value;
   container.id = "listContainer";
   listForm.id = "createBox";
   smallList.id = "contentBoxWrap";
   newListTitle.innerText = listTitle;
+  newListTitle.style.backgroundColor = color;
   newListInput.id = "content";
   newListInput.type = "text";
   newListInput.placeholder = "새로 만들기";
@@ -27,11 +32,13 @@ button.addEventListener("click", (e) => {
   list.appendChild(container);
   container.appendChild(bigList);
   bigList.appendChild(newListTitle);
+  bigList.appendChild(count);
   bigList.appendChild(smallList);
   bigList.appendChild(listForm);
   listForm.appendChild(newListInput);
   listForm.appendChild(newListButton);
   title.value = "";
+  backColor.value = "";
   newListButton.addEventListener("click", (e) => {
     e.preventDefault();
     const newListContent = document.createElement("div");
@@ -39,5 +46,7 @@ button.addEventListener("click", (e) => {
     newListContent.id = "contentBox";
     smallList.appendChild(newListContent);
     newListInput.value = "";
+    countNumber++;
+    count.innerText = `${countNumber}`;
   });
 });

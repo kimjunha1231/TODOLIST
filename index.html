@@ -11,9 +11,11 @@
 <body>
     <h1 class="title">Vanilla JS DRAG & DROP Todo List 구현(50점)</h1>
 
-    <div class="secondTitle">Todo List <span>+보기 추가</span>
+    <div class="secondTitle">Todo List <label for="check-btn">+보기 추가</label><input id="check-btn"
+            type="checkbox"></input>
         <form action="/list" id="createForm">
-            <input type="text" placeholder="title" id="title">
+            <input type="text" placeholder="title" class="titles">
+            <input type="text" placeholder="영어로 색" class="backGroundColor">
             <button id="addButton">만들기</button>
         </form>
     </div>
